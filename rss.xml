@@ -1,4 +1,289 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Tableau Tim]]></title><description><![CDATA[Data, quantifiedself and everything in between.]]></description><link>https://tableautim.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 08 Dec 2019 01:16:20 GMT</lastBuildDate><item><title><![CDATA[Tableau Conference 2017: Las Vegas Roundup]]></title><description><![CDATA[A super brief roundup of 2017 conference. A little lighter than last years effort but mainly because in 2018, I'll be taking a slightly different approach to vlogging having claimed 2017 would be the year it would happen. Stay tuned and enjoy.]]></description><link>https://tableautim.com/posts/tableau-conference-2017-las-vegas-roundup/</link><guid isPermaLink="false">https://tableautim.com/posts/tableau-conference-2017-las-vegas-roundup/</guid><pubDate>Tue, 14 Nov 2017 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;A super brief roundup of 2017 conference. A little lighter than last years effort but mainly because in 2018, I’ll be taking a slightly different approach to vlogging having claimed 2017 would be the year it would happen. Stay tuned and enjoy.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Tableau Tim]]></title><description><![CDATA[Data, quantifiedself and everything in between.]]></description><link>https://tableautim.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 08 Dec 2019 01:57:12 GMT</lastBuildDate><item><title><![CDATA[Setting up Tableau Scout]]></title><description><![CDATA[Tableau scout is a neat utility that makes it easy to do some user acceptance testing on Tableau workbooks on Tableau server. In this post i walk through the setup process.]]></description><link>https://tableautim.comsetting-up-tableau-scout</link><guid isPermaLink="false">https://tableautim.comsetting-up-tableau-scout</guid><pubDate>Mon, 29 Jul 2019 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;Post originally publish on &lt;a href=&quot;https://www.theinformationlab.co.uk/2019/07/29/setting-up-tableau-scout/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;The Information Lab Blog&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Tableau scout is a neat utility that makes it easy to do some user acceptance testing on Tableau workbooks on Tableau server. The big features to call out are its ability to test workbooks in a specific project or site for performance, load times, errors and also keep a long view of these factors as you make changes to your server topology or change data source. It can also record server-side statistics relating to the tests and store the results in a database for long term views of how your performance is fairing.&lt;/p&gt;
+&lt;p&gt;In this post (the first of many), I’m going to cover how to set it up on your computer. At the time of writing, it only runs on a Windows machine so Mac users like myself have to run this on a remote machine or a virtual image. &lt;/p&gt;
+&lt;h2 id=&quot;step-1-download-tableau-scout&quot;&gt;&lt;a href=&quot;#step-1-download-tableau-scout&quot; aria-label=&quot;step 1 download tableau scout permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Step 1 Download Tableau Scout&lt;/h2&gt;
+&lt;p&gt;You can grab Tableau Scout from the following community forum page. Scout is a community tool and as such is not officially supported by Tableau but is built as a utility for the community mostly by Tableau developers but also by members of the community.
+&lt;a href=&quot;https://community.tableau.com/docs/DOC-10034&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://community.tableau.com/docs/DOC-10034&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;step-2-setup-dependencies&quot;&gt;&lt;a href=&quot;#step-2-setup-dependencies&quot; aria-label=&quot;step 2 setup dependencies permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Step 2 Setup dependencies.&lt;/h2&gt;
+&lt;p&gt;Scout uses the Java JVM technology ( Java Virtual Machine ) so requires you to install java then as an additional step add java to the  path variables so it can be referenced in the command line. &lt;/p&gt;
+&lt;p&gt;Let’s do the first step. Install Java and be sure to install the 64-bit version. By default, the installer you get is 32-bit so be sure to select manual downloads and select the 64-bit download. Here’s the current link to the download page: &lt;a href=&quot;https://java.com/en/download/manual.jsp&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://java.com/en/download/manual.jsp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Once installed you need to set some   path variables. If you use the command line frequently line you’ll be familiar with this step. If not follow along. &lt;/p&gt;
+&lt;p&gt;First, head to the advanced system settings panel. In windows 10 you can simply search for it.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 810px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7018d6dcce40acecdf5ad530615d9a09/3532c/advanced%20system%20setting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 31.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABYUlEQVQY052QSSiEcRjGv4OaEDe5UC5TshwdXFyclSK54CAXFwdXKUvJNlk+g2YkM6axzIwhwrjYpmQpY0i2mXFh6JuVsqWf/4wicvLWr/d9n97nObxSRnYBUmI6pVX1DBnsdGon6R420TNqRqObplc3g0Y/K7CgGfuNVWCjR29Fa1qiuKYJKTdbTbIqAblfA7wTUu5R7m74T7XKZiR1Tj6qpBQamrs4VGDjPMD6mcLWZSjO5kWM4J/d6Yni9D6wdRXBdfdGdbsIzKxoQypqpE5eY9z1QMeGH+PmBSOrbgYX9hiY30VePGBI0G/fieujjmO0y4cYnD7mTx+xusM4PK+Ut0wjZdWOkFopUz28jeMsjHH3FvO+Xxxfxw0T214sriA2dyRunDuJYjuO/tgtR2FWRGBZs1EEFpYgpeXR1DdBVPzBG3jGF3zBF3r97IJrMceIaR7l6Wv/1p4JvEB99xQfGi586KW0SugAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/7018d6dcce40acecdf5ad530615d9a09/01472/advanced%20system%20setting.webp 240w,
+/static/7018d6dcce40acecdf5ad530615d9a09/222bd/advanced%20system%20setting.webp 480w,
+/static/7018d6dcce40acecdf5ad530615d9a09/89647/advanced%20system%20setting.webp 810w&quot;
+          sizes=&quot;(max-width: 810px) 100vw, 810px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/7018d6dcce40acecdf5ad530615d9a09/0783d/advanced%20system%20setting.png 240w,
+/static/7018d6dcce40acecdf5ad530615d9a09/782f4/advanced%20system%20setting.png 480w,
+/static/7018d6dcce40acecdf5ad530615d9a09/3532c/advanced%20system%20setting.png 810w&quot;
+          sizes=&quot;(max-width: 810px) 100vw, 810px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/7018d6dcce40acecdf5ad530615d9a09/3532c/advanced%20system%20setting.png&quot;
+          alt=&quot;advanced system setting&quot;
+          title=&quot;advanced system setting&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Once there you should see the following options
+&lt;img src=&quot;envrionemtn%2020variables%2020interface.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Select the very last option titled “Environment Variables” and that opens a second window. We’re only interested in the green options, New and edit. &lt;/p&gt;
+&lt;p&gt;First, let’s set the System variable to point to the Java Home directory. Set Java Home variable by selecting the new option highlighted in green in the image.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6392b24bdfc32ba9d7e78117449e5103/da2f0/Set%20java%20home.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC2UlEQVQ4y11TO4sUQRAeA0MRNBbM1PMUNDARPBNDLzhEMyMRTy829AQTEcQ/YGQkCAYGFygqBocoXiL3WPcxszPb89rdmel5zz4/q3ruRB34qKan+6uvqr7WtBNXwDh08iq0Y5dwY3UdwvHQaBloGT10hQuj50K3HHRMGx2KuuXWoP0ORUP4aOgCp24+hvb+yze83fiMjU9f8e7DJrZ+NjDo+3AdB77nKcRSIs8zFEVeI69jub/mGIYRFh+8ggZMEIUBsiTGZFQiz1IYugHPJaI4RpblcF0XjuPC9zmRC8/z1Z5t2xDCRjAcIohiLDzZghYTmWGYKsNgMCQMYKtDlCTLwB+r3N3eQavZIjRV9Ik0DEMEQYA0SSDjFGeetVkhSElCJRRUVq5UxTLG3x+XFdFlvniA2Wz2z5koSbH4OoY2n4wQkLrxeEyg8pMMMs2RFRXK8VShmswwms4x4riPcjRBUY2REwpaJ3Tn+tcxKZxPMRzWsmPKwhMWQqDfHyChvWRf/QG4iv+R5gVQZlj7UdUll1WF+XyupPdsFz3TQkSTNSwbuingBxJOP1BxKBMEMkUYZ4hJFVcTJDRpIr73cQCtopF3u101QUlq9K6Jxt4eDcqAJRzs/Wpht9FEt2djEERqmhGdc4MY24aHphjCdHwEroO171mtcET9m06nGE+mcAcBkVrwKUrqJxMYZg+mJdQ6JIUhDY3VtkUfuk2u8PpwbAfLm2VNOCGig5J5OBaXHMk/idh3nbZOXnSUH13qM/uQ7RRFEaZ0vx9KXHwT14RpmqIsC2XwPr0SLl/0hLrEBufInuNzHr8e+s9+dekfD5SJBfV+4YUJbWnlLi4v38HSyirOX7uNR89foiJySUORsax9SZCkJIpCRX7wSkzTVKrb7TZsIl98ugNNO7IA7eg5aMcvQDt8Grfur2NUFSozq+IXxIiiGpLJCTb1jO3FkYltasPZhxv4DZ6r8hb5a3OwAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/6392b24bdfc32ba9d7e78117449e5103/01472/Set%20java%20home.webp 240w,
+/static/6392b24bdfc32ba9d7e78117449e5103/222bd/Set%20java%20home.webp 480w,
+/static/6392b24bdfc32ba9d7e78117449e5103/620b9/Set%20java%20home.webp 960w,
+/static/6392b24bdfc32ba9d7e78117449e5103/28063/Set%20java%20home.webp 1440w,
+/static/6392b24bdfc32ba9d7e78117449e5103/5ea2f/Set%20java%20home.webp 1750w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/6392b24bdfc32ba9d7e78117449e5103/0783d/Set%20java%20home.png 240w,
+/static/6392b24bdfc32ba9d7e78117449e5103/782f4/Set%20java%20home.png 480w,
+/static/6392b24bdfc32ba9d7e78117449e5103/f570d/Set%20java%20home.png 960w,
+/static/6392b24bdfc32ba9d7e78117449e5103/8d0ff/Set%20java%20home.png 1440w,
+/static/6392b24bdfc32ba9d7e78117449e5103/da2f0/Set%20java%20home.png 1750w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/6392b24bdfc32ba9d7e78117449e5103/f570d/Set%20java%20home.png&quot;
+          alt=&quot;Set java home&quot;
+          title=&quot;Set java home&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Now let’s edit the  path system variable and add a new item to the bottom pointing to the ‘bin’ folder inside the Java Home directory. This is why we set up the first system variable. &lt;/p&gt;
+&lt;p&gt;Doing it this way allows you to change the version of Java you’d like to use by just repointing the Java Home to a different folder. &lt;/p&gt;
+&lt;p&gt;Now we’re all set we can check to make sure everything works as it should. Open the command line and run the commands highlighted in red.  &lt;code class=&quot;language-text&quot;&gt;echo  JAVA_HOME&lt;/code&gt;  &lt;code class=&quot;language-text&quot;&gt;java -version&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c7b8e3a5737f4e8ab8abe166081ca45b/67148/check%20Java%20installed%20properly.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 47.59615384615385%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABqElEQVQoz62RXU8TURCGD+1+2P1qt7vttt3qFohB2y0mCoi2hZLws7zwBr1RMBqM0eiv8ZZINRAN8hEqSgP/4fHsqsREjZh48WYmk3mfmTNHbAy22Hj7nsH2DptbO7x594FNqb3hMYdfThken7L/acTeT9o/OuHg80ma7w5HbO8ecnA04vXgI2Kx12FxocdSv89Ct0un1+OWjL3+Uhr7y8vclnHmxnXmb84xNzvDtek20+34TO04Jm5eYXX9BUJTVVRVk1JRdJ1AyzJlaly2LtDQs7QsHV/WhBB/1Z2VB4iL9ZBqtUoQlKnUasSVEp16mfl6QDeqMRsUcZWx1DD23ZjJZH5RUr+/9hRR8n18qbzjUPRLTPkFWkWbhqHT9BxqWXGO7b4NXFldRzSiS0RRRBiGNMbHaU40aIUVroZVJj2XyUoZJ59PB3qeh+u65HI5FEUhOdeP7VLgo+eIvGNTKBSkycGRJsO00A0D03bQpNGWMNu2sSyLvMxN00xzy7Jlv53e/gz45BXCSZqlDAlJwMnk83zAb5+cAP/d/Gfgvccv/y/w7sNnfAXCiySxK8MpGgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/c7b8e3a5737f4e8ab8abe166081ca45b/01472/check%20Java%20installed%20properly.webp 240w,
+/static/c7b8e3a5737f4e8ab8abe166081ca45b/222bd/check%20Java%20installed%20properly.webp 480w,
+/static/c7b8e3a5737f4e8ab8abe166081ca45b/620b9/check%20Java%20installed%20properly.webp 960w,
+/static/c7b8e3a5737f4e8ab8abe166081ca45b/1cb16/check%20Java%20installed%20properly.webp 1248w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/c7b8e3a5737f4e8ab8abe166081ca45b/0783d/check%20Java%20installed%20properly.png 240w,
+/static/c7b8e3a5737f4e8ab8abe166081ca45b/782f4/check%20Java%20installed%20properly.png 480w,
+/static/c7b8e3a5737f4e8ab8abe166081ca45b/f570d/check%20Java%20installed%20properly.png 960w,
+/static/c7b8e3a5737f4e8ab8abe166081ca45b/67148/check%20Java%20installed%20properly.png 1248w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/c7b8e3a5737f4e8ab8abe166081ca45b/f570d/check%20Java%20installed%20properly.png&quot;
+          alt=&quot;check Java installed properly&quot;
+          title=&quot;check Java installed properly&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We’re ready to run Scout! &lt;/p&gt;
+&lt;p&gt;You cash run it in one of two ways, directly in the command line or using the user interface. In this post we will cover the user interface and in future posts highlight why the command line method might be preferred. &lt;/p&gt;
+&lt;h2 id=&quot;step-3-your-first-run-of-scout&quot;&gt;&lt;a href=&quot;#step-3-your-first-run-of-scout&quot; aria-label=&quot;step 3 your first run of scout permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Step 3: Your first run of Scout&lt;/h2&gt;
+&lt;p&gt;To run scout simply double click the highlighted batch file. You will get a prompt to run it as an administrator.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a601da43badc8b08a45fd2262bd18999/44e11/Runscout.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.833607907742994%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABIUlEQVQoz22S62rDMAyF/f6vNSj728IGHYFtbCNpsBPHiZ04tzPLrtPmIhCWQP6kI5vVjUG0eZ4xTdMSk1nbQ1Y1Cql8PI4jGv24E/I23JlmsDK/wpie0gVCZ4z7vkdRFCjLEkopDMPg87quV7XRWZFeUCmzAy1AayE4hxACUkoPpLyqqlVdNMb/zsiycGE6mvAZ6CBHwOAhdsAL6sa63Y278aNkgglRLJKFIKBaTbiSrM2Are2B4hC4lc1+fz6RppmfIMsy5LfcQR4NniVXUbKL6ZFop13X+bq2bb2zr9cTktML5NsZsyoxbXZoHZA7IOcOcn+UkHPcXHOtta8zxkA3Gkx9vEMlV4zfCeCAdw0LkP5Z7N5Z6/9pzMmpARmd5P+7gbvigGLKhAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/a601da43badc8b08a45fd2262bd18999/01472/Runscout.webp 240w,
+/static/a601da43badc8b08a45fd2262bd18999/222bd/Runscout.webp 480w,
+/static/a601da43badc8b08a45fd2262bd18999/620b9/Runscout.webp 960w,
+/static/a601da43badc8b08a45fd2262bd18999/72f47/Runscout.webp 1214w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/a601da43badc8b08a45fd2262bd18999/0783d/Runscout.png 240w,
+/static/a601da43badc8b08a45fd2262bd18999/782f4/Runscout.png 480w,
+/static/a601da43badc8b08a45fd2262bd18999/f570d/Runscout.png 960w,
+/static/a601da43badc8b08a45fd2262bd18999/44e11/Runscout.png 1214w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/a601da43badc8b08a45fd2262bd18999/f570d/Runscout.png&quot;
+          alt=&quot;Runscout&quot;
+          title=&quot;Runscout&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The first time you run it you’ll see the command line fire up. It can take a while for the Scout interface to show up so be patient. If it fails it might close without any warning so if it does this more than a couple of times then record your screen and play it back to catch any error codes that come up. The command line should look like this if it’s worked and Tableau scout will have loaded. &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/06edded3519013d73901849fb967bdf9/1b2ac/scout%20and%20command%20line%20.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.769230769230774%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACJklEQVQoz32T2WsTURSH76QL+pCYdZQmFLdaW7UqlQqlgvjSh+KCFS0o6IMIlZQQXCjiq6/+dz6UNmmNSSazb5mZLJCf596YEqh64XDuDNxvvnPuGfZ2ewfbxRLe75RR/riL0ofPKH/aRbFUxtdv3/Fj7wD7lSoqRzVUKXg+/PkLtXoTR7U6GooKRdXQUnVU6T2bPnUaEmNgf4n1h89gOS40tQXbtuH7PjzPg+e69GzBNA2xD4MAURTCtCywKwsLKBQKyOeHIcsysrkcpqcm8WTrDTTDgqI06bAJlw5zaLvdFrnT6RAoQhiGItv0cXbh0hyB8gI6BOeRI2CMDB+9fAfbC+A49jEoIBu+5wC+BoMBRivq9sCSGRnpdIoijXg8jkQigTPJpCiZA03Hh6Frws6ikhzHEWWPA0fQqNOlc9Lkyf5J0rCHT1/BD7tw/0C4GTf8P3Bi6gRwIjbMG89fQzUdNBsNaJoGXdePL+bfwNRlsNQcWOYqmHwd7NwtxGZXwfKrmN/8gnpLF7fMgfxieNnjwPElesiyS2Bn74AV1sDOPwC7uA5p/jHY4gsk7xdpBg9hE4SbjWIc2O/30ev1hGUQdQiYXiQ7MpNvk90y2MwKpNl7ZLiG3PIm9g8qUFvDOeS3zEeE55Exf68bhuitYdIcsiSVmrkGlr0BYZu7CWnmLlmvILu0If4KVVWhalQ69VBRWvDbgbAJwggB9W1PsaC7Pg22jd9SH3I3mxkaGwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/06edded3519013d73901849fb967bdf9/01472/scout%20and%20command%20line%20.webp 240w,
+/static/06edded3519013d73901849fb967bdf9/222bd/scout%20and%20command%20line%20.webp 480w,
+/static/06edded3519013d73901849fb967bdf9/620b9/scout%20and%20command%20line%20.webp 960w,
+/static/06edded3519013d73901849fb967bdf9/28063/scout%20and%20command%20line%20.webp 1440w,
+/static/06edded3519013d73901849fb967bdf9/34ef4/scout%20and%20command%20line%20.webp 1920w,
+/static/06edded3519013d73901849fb967bdf9/3e1d7/scout%20and%20command%20line%20.webp 2808w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/06edded3519013d73901849fb967bdf9/0783d/scout%20and%20command%20line%20.png 240w,
+/static/06edded3519013d73901849fb967bdf9/782f4/scout%20and%20command%20line%20.png 480w,
+/static/06edded3519013d73901849fb967bdf9/f570d/scout%20and%20command%20line%20.png 960w,
+/static/06edded3519013d73901849fb967bdf9/8d0ff/scout%20and%20command%20line%20.png 1440w,
+/static/06edded3519013d73901849fb967bdf9/a987b/scout%20and%20command%20line%20.png 1920w,
+/static/06edded3519013d73901849fb967bdf9/1b2ac/scout%20and%20command%20line%20.png 2808w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/06edded3519013d73901849fb967bdf9/f570d/scout%20and%20command%20line%20.png&quot;
+          alt=&quot;scout and command line &quot;
+          title=&quot;scout and command line &quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In the next post we will cover the process of running scout and how to configure it for different types of tests but for now, have a go and see where you end up. &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Disabling the auto generation of phone layouts in Tableau]]></title><description><![CDATA[As Tableau users increasingly seek insight on the go, mobile dashboards are becoming an increasingly common request. In this post i show you how to disable the auto generated mobile layouts if they often render a layout you dont lile.]]></description><link>https://tableautim.comdisabling-the-auto-generation-of-mobile-layouts-in-tableau</link><guid isPermaLink="false">https://tableautim.comdisabling-the-auto-generation-of-mobile-layouts-in-tableau</guid><pubDate>Fri, 10 May 2019 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;Post originally publish on &lt;a href=&quot;https://www.theinformationlab.co.uk/2019/05/10/disabling-the-auto-generation-of-phone-layouts-in-tableau/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;The Information Lab Blog&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;As Tableau users increasingly seek insight on the go, mobile dashboards are becoming an increasingly common request. For some time now, Tableau has included the ability to create layouts for different device types, notably, desktop (Default), tablet and phone.
+In the most recent release (2019.1) Tableau enhanced the capability by introducing automatic dashboard phone layouts. &lt;/p&gt;
+&lt;p&gt;This means that if you’ve built a dashboard and published just the desktop version, tableau will do its best to generate a mobile layout for you if a user views it on a phone. In the video below, we take one of the sample workbooks, switch it to a phone layout and you can see the Tableau automatically flows the content to suit the orientation and phone format with a long scroll based dashboard. This would be what the user sees if you didn’t add a phone layout yourself.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.42857142857143%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;div class=&quot;embedVideo-container&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/rWFSAJAGyEk?rel=0&quot; class=&quot;embedVideo-iframe&quot; style=&quot;border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot; allowfullscreen&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;This feature comes enabled by default and is a great time save, but in some cases you might want to switch this feature off to build something more bespoke or you don’t want the web version of your workbook to have a phone layout that you’ve maybe not had the chance to check. To do this you have 2 approaches.&lt;/p&gt;
+&lt;p&gt;The first is to keep the automatic phone layout creation on but once you have your layout,  customise and make it bespoke as I did int he video above when I switched to ‘Edit layout myself’.&lt;/p&gt;
+&lt;p&gt;The second is to disable it in the menu settings so the option isn’t on by default. This way if you only build a desktop view and publish it up, users will still only see the desktop design as the automatic creation isn’t enabled.&lt;/p&gt;
+&lt;p&gt;Note if you use Tableau public, Automatic creation of phone layouts is off by default so you’ll have to enable it unlike in Tableau desktop. &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 586px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/aa6beb54a3d9b6b9c357939d7b1feae9/67f41/disable-auto-generated-phone-layouts.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.25597269624573%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsSAAALEgHS3X78AAADBklEQVQoz1WSS2/bRhSF+V+DLrrNossugjapVbRoUcMtrDiI3cSG3TgwHNmx6zdlkRRlUnxz+BBNSyQlmhSpBylLKkn1Vln1YjAzGOCbc8+ZwdbXNl6Ufljf3H39du+Pje3y27219a2f1v58v/ozUXpWLX1VKT3/5fetN+8PVsvbG+8Oylv75c3939bflTc/YJ0GwevXio6sVsswDF2HybSsliBJ+C11fHL29/nV6dnVLUFLisZLCstLgiBZlmWaJhb0+3E4iPr9IAgcx+ktK44j236oUXfAVGsUSTMyMkQZiRKi7zgQ6IfhcDjCwjCMon6WZZ7nRVE0n8/HSeI/+kjTOFFpsDzTFGXVUDVT1VoKMmGPkAbUZDLBRqMRSHU6HZiTJCmKAk7iOHbcLt2UKEa4ExRO1gXUElVTVA1eQqA8WRb20O4oKgID7Xbbtm248unpaRj3ddO6akiXtHDDyIRokJJZl01GNhhJs6z7OOqHQQBwGzLqdrtZns9mszgeZPPZtWj+elg9rHEfbph9nD2kpFNWP2N1nNcoAVEMyysKDOwxCOEmWZYHgwH0/E+WLRbFZ1Zb+YgfUdIBIXyqK5UGOmqgEwZdNlGNUz9VqxWKrJAkFo/GfhCCZ9/3p9PpYrHIsnySJqbdvqCFc4rDWbUmGDBIUSc4BaebFbwKZF2SsGgw8nq+3+tB1BAYwKAfBI+QS11ERFOmBLWJLF63Of2eUU1SRIe3xBFFWu0HbDQeT2cziC5NU3gngPM8T9LUlmTh4pK/uGyeX+gEZVB1jaCUGiHe4McnJ6yGXM/FINvF/yvPsmQy7R7tepvfPu6Vensr/u5Kb+eVu/3S23nlrH59/Wb1jBMYWcbAra7rXxrOlwUfJp1MfEN7YGlHYK27uiM0YXPPNgJVpk5B+HNVEBzXweCRYIG/CQyQy8AATofDcTaH5BfjeFzkxZemsqJwg9D2XNfzAPzPc5yO7pcFgYOLvMinw+RYJV+Q2z829r8nd0r0X99RO9/grxsOGoaR13WB9Dz3X16y917AyxS2AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/aa6beb54a3d9b6b9c357939d7b1feae9/01472/disable-auto-generated-phone-layouts.webp 240w,
+/static/aa6beb54a3d9b6b9c357939d7b1feae9/222bd/disable-auto-generated-phone-layouts.webp 480w,
+/static/aa6beb54a3d9b6b9c357939d7b1feae9/2e258/disable-auto-generated-phone-layouts.webp 586w&quot;
+          sizes=&quot;(max-width: 586px) 100vw, 586px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/aa6beb54a3d9b6b9c357939d7b1feae9/0783d/disable-auto-generated-phone-layouts.png 240w,
+/static/aa6beb54a3d9b6b9c357939d7b1feae9/782f4/disable-auto-generated-phone-layouts.png 480w,
+/static/aa6beb54a3d9b6b9c357939d7b1feae9/67f41/disable-auto-generated-phone-layouts.png 586w&quot;
+          sizes=&quot;(max-width: 586px) 100vw, 586px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/aa6beb54a3d9b6b9c357939d7b1feae9/67f41/disable-auto-generated-phone-layouts.png&quot;
+          alt=&quot;Image&quot;
+          title=&quot;Image&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Tableau Conference 2017: Las Vegas Roundup]]></title><description><![CDATA[A super brief roundup of 2017 conference. A little lighter than last years effort but mainly because in 2018, I'll be taking a slightly different approach to vlogging having claimed 2017 would be the year it would happen. Stay tuned and enjoy.]]></description><link>https://tableautim.com/posts/tableau-conference-2017-las-vegas-roundup/</link><guid isPermaLink="false">https://tableautim.com/posts/tableau-conference-2017-las-vegas-roundup/</guid><pubDate>Tue, 14 Nov 2017 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;A super brief roundup of 2017 conference. A little lighter than last years effort but mainly because in 2018, I’ll be taking a slightly different approach to vlogging having claimed 2017 would be the year it would happen. Stay tuned and enjoy.&lt;/p&gt;
 &lt;p&gt;&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.42857142857143%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;div class=&quot;embedVideo-container&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/MAnDg1-123A?rel=0&quot; class=&quot;embedVideo-iframe&quot; style=&quot;border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot; allowfullscreen&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;/div&gt; &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Mobile device test Tableau dashboards without a device.]]></title><description><![CDATA[One question I often get is how I manage my workflow for mobile device designs in Tableau. Depending on your version this can be tricky especially if youd like to test things in a semi realistic environment. In this post i show one way you can test in the browser, without a device.]]></description><link>https://tableautim.commobile-device-test-tableau-dashboards</link><guid isPermaLink="false">https://tableautim.commobile-device-test-tableau-dashboards</guid><pubDate>Wed, 30 Aug 2017 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;&quot;
