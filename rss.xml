@@ -1,4 +1,182 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Tableau Tim]]></title><description><![CDATA[Data, quantifiedself and everything in between.]]></description><link>https://tableautim.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Dec 2019 12:35:00 GMT</lastBuildDate><item><title><![CDATA[What’s new in Tableau Desktop 2019.3]]></title><description><![CDATA[“In this post I round up the new features in Tableau Desktop 2019.3 with 6 short videos covering each feature. Parameter actions, Italian localisation, local coordinate systems, explain data, parameter action enhancements and distance calculations.“]]></description><link>https://tableautim.comwhat’s-new-in-tableau-desktop-2019-3</link><guid isPermaLink="false">https://tableautim.comwhat’s-new-in-tableau-desktop-2019-3</guid><pubDate>Mon, 09 Dec 2019 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;In this post I round up the new features in Tableau Desktop 2019.3 with 6 short videos covering each feature. Parameter actions, Italian localisation, local coordinate systems, explain data, ISO8601 date formats and distance calculations.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Tableau Tim]]></title><description><![CDATA[Data, quantifiedself and everything in between.]]></description><link>https://tableautim.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 17 Dec 2019 21:42:58 GMT</lastBuildDate><item><title><![CDATA[Animations vs transitions what's the difference?]]></title><description><![CDATA[“In this post I dive deep into a topic more about semantics than the feature, Viz Animations has landed in the 2020.1 beta and I'd like to make a case about why that's not the correct term for what we've been shown so far.“]]></description><link>https://tableautim.comanimations-vs-transitions</link><guid isPermaLink="false">https://tableautim.comanimations-vs-transitions</guid><pubDate>Wed, 11 Dec 2019 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;TLDR: it’s probably just product marketing that’s winding me up and I should care less but, unfortunately, I do care.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Before I dive into that, let me set some context. A couple of weeks back during the Tableau conference, Tableau demoed their new feature, Animations. This feature has been long-awaited with many examples of the feature in the community ideas section of the Tableau forum. I’ve voted for many of them myself, and whilst we’re talking about the feature, I love the implementation. &lt;/p&gt;
+&lt;p&gt;It’s hard to take animation or transition concepts and choose defaults, then deploy them across every mark-type considering everything else going on in a visulisation. My colleague Craig has done a great video highlighting the value that transitions are going to bring. Check it out here.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.42857142857143%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;div class=&quot;embedVideo-container&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/zRJkD1jt45Q?rel=0&quot; class=&quot;embedVideo-iframe&quot; style=&quot;border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot; allowfullscreen&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;It would also be a shame if you read this blog before checking out the conference talk on this very topic, there’s so much context about the future of the feature here and it really clearly highlights how Tableau have considered a range of views through test versions and feedback opportunites, some of which I’ve been part of prior to the feature being showcased. Many of the examples showcased in the video were created by my collegues at The Information Lab.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.42857142857143%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;div class=&quot;embedVideo-container&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/wYkP51pO11E?rel=0&quot; class=&quot;embedVideo-iframe&quot; style=&quot;border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot; allowfullscreen&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&quot;some-context&quot;&gt;&lt;a href=&quot;#some-context&quot; aria-label=&quot;some context permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Some context&lt;/h2&gt;
+&lt;p&gt;Now as Craig mentions in the video, I took issue with the specific naming of the feature but before I dive into why, it’s important to set some context, that being the feature is in prerelease and Tableau were/are openly asking for feedback about the feature and so, with the door open for opinion and feedback, I tweeted the following (head to the tweet to see some replies). &lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;
+&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;These are not animations. These are TRANSITIONS argh ! #tc19 #data19&lt;/p&gt; Tim Ngwena (@TableauTim)\&lt;a target=&quot;blank&quot; href=&quot;https://twitter.com/TableauTim/status/1195026636434853890?ref\_src=twsrc%5Etfw&quot;&gt;November 14, 2019&lt;/a&gt;&lt;/blockquote&gt;
+&lt;p&gt;One of the downsides with a reactive social media platform like Twitter came through in the tweet, it was 100% reactive and I also failed to highlight that I had been engaged in many previous discussions about the topic through the prerelease programme and alpha builds going back to Tableau Labs in 2018, hence the misplaced frustration over the name of a feature. I honestly need to get out more, HOWEVER! in my opinion, &lt;strong&gt;‘mark transitions’&lt;/strong&gt; as a name is far better or even &lt;strong&gt;‘animated transitions’&lt;/strong&gt; coined by &lt;a href=&quot;https://twitter.com/HighVizAbility/status/1197263391942946816&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Jeffrey Shaffer on Twitter&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;I think both do a better job of describing the behaviour we were being shown on screen and more importantly, leaves space for the feature we want (more on this later). Why is that? and why does it matter that we get these names exactly right? most businesses are still battling far bigger issues around data literacy that being pedantic about terminology is hardly where we want to spend our time. Well, there’s more to it than just a better sounding name and this is where we have to go into the weeds and discuss the difference between animations and transitions.&lt;/p&gt;
+&lt;h2 id=&quot;transitions-vs-animations-whats-the-difference&quot;&gt;&lt;a href=&quot;#transitions-vs-animations-whats-the-difference&quot; aria-label=&quot;transitions vs animations whats the difference permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Transitions vs Animations what’s the difference&lt;/h2&gt;
+&lt;p&gt;In most cases, transitions usually refer to the change in state from one thing to another, take for example Powerpoint, a transition refers to the change form one slide to the next or one bullet point to the next. In video editing the transition you choose for example a dissolve effect goes from one video to another using that effect. The direction is linear, there’s a known duration and the only scope you get to define is how that one step is made. &lt;/p&gt;
+&lt;p&gt;However, when we refer to animations, typically we expect a little more because at its heart, animations are more or less a series of changes compiled together to give the impression of movement rather than just a start and stop. You could even argue that an animation is a series of transitions stitched together to make one seamless sequence.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.adobepress.com/articles/article.asp?p=2300569&amp;#x26;seqNum=2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Stephen Bradley summarises this well&lt;/a&gt; in this image below, although also worth highlighting the domain he’s talking about is web design rather than data visualisation.  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 520px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 61.53846153846154%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAAD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAFrcjEYT7Q//8QAGhAAAgMBAQAAAAAAAAAAAAAAAgMAARQRNP/aAAgBAQABBQJdAkQ5dZ1wViMP0Zgn/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEh/9oACAEDAQE/AbGv/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECAxQhUf/aAAgBAgEBPwGUm9syLen/xAAeEAACAQMFAAAAAAAAAAAAAAAAAQIRMVESISIzQf/aAAgBAQAGPwKXPVXApI7kWvkglsen/8QAGRABAAMBAQAAAAAAAAAAAAAAAQARIXHw/9oACAEBAAE/IW4qRcWJaY2sh0LHSYyGYTyZ/9oADAMBAAIAAwAAABDMz//EABcRAQEBAQAAAAAAAAAAAAAAAAEAEXH/2gAIAQMBAT8Q0Bbgv//EABgRAAIDAAAAAAAAAAAAAAAAAAABMfDx/9oACAECAQE/EG87ZRh//8QAHBABAAIDAAMAAAAAAAAAAAAAAQARITFBUWHR/9oACAEBAAE/EF6GKCzfuCsFEt5FJRa8PsC6wU8GoDOEyaDLyKt1nP8A/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/108ea3beb8bcbb30f89153655db12e8d/01472/animation%20states.webp 240w,
+/static/108ea3beb8bcbb30f89153655db12e8d/222bd/animation%20states.webp 480w,
+/static/108ea3beb8bcbb30f89153655db12e8d/408f1/animation%20states.webp 520w&quot;
+          sizes=&quot;(max-width: 520px) 100vw, 520px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/108ea3beb8bcbb30f89153655db12e8d/3bc27/animation%20states.jpg 240w,
+/static/108ea3beb8bcbb30f89153655db12e8d/98431/animation%20states.jpg 480w,
+/static/108ea3beb8bcbb30f89153655db12e8d/6f72a/animation%20states.jpg 520w&quot;
+          sizes=&quot;(max-width: 520px) 100vw, 520px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/108ea3beb8bcbb30f89153655db12e8d/6f72a/animation%20states.jpg&quot;
+          alt=&quot;Animations vs Transitions&quot;
+          title=&quot;Animations vs Transitions&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+    &lt;/span&gt;
+States in transitions and animations&lt;/p&gt;
+&lt;p&gt;That said, why re-invent the wheel? In other software that we use day to day, the distinction between animations and transitions is pretty clear. &lt;/p&gt;
+&lt;p&gt;Thinking back to states, you can see how PowerPoint clearly distinguishes between the two, choosing to treat animations as a series of steps that act as one movement, rather than just a series of transitions.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 12.932723709993468%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAADABQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABtACP/8QAFhAAAwAAAAAAAAAAAAAAAAAAAAES/9oACAEBAAEFApRKJR//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAWEAEBAQAAAAAAAAAAAAAAAAAAMQH/2gAIAQEABj8CiJj/xAAXEAADAQAAAAAAAAAAAAAAAAAAYZHx/9oACAEBAAE/IV4JQxj/2gAMAwEAAgADAAAAEHf/AP/EABYRAAMAAAAAAAAAAAAAAAAAAAABEf/aAAgBAwEBPxCsrP/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABkQAAEFAAAAAAAAAAAAAAAAAAARIcHR8f/aAAgBAQABPxB2EI1jAH//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/ad58c569db06da5f59d4da2857de8a17/01472/powerpoint-transitions.webp 240w,
+/static/ad58c569db06da5f59d4da2857de8a17/222bd/powerpoint-transitions.webp 480w,
+/static/ad58c569db06da5f59d4da2857de8a17/620b9/powerpoint-transitions.webp 960w,
+/static/ad58c569db06da5f59d4da2857de8a17/28063/powerpoint-transitions.webp 1440w,
+/static/ad58c569db06da5f59d4da2857de8a17/3cdc8/powerpoint-transitions.webp 1531w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/ad58c569db06da5f59d4da2857de8a17/3bc27/powerpoint-transitions.jpg 240w,
+/static/ad58c569db06da5f59d4da2857de8a17/98431/powerpoint-transitions.jpg 480w,
+/static/ad58c569db06da5f59d4da2857de8a17/b3ee8/powerpoint-transitions.jpg 960w,
+/static/ad58c569db06da5f59d4da2857de8a17/b97fe/powerpoint-transitions.jpg 1440w,
+/static/ad58c569db06da5f59d4da2857de8a17/47faf/powerpoint-transitions.jpg 1531w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/ad58c569db06da5f59d4da2857de8a17/b3ee8/powerpoint-transitions.jpg&quot;
+          alt=&quot;Powerpoint Transitions&quot;
+          title=&quot;Powerpoint Transitions&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 13.651208360548662%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAADABQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABtiAP/8QAFxAAAwEAAAAAAAAAAAAAAAAAAAESEf/aAAgBAQABBQKUYiUf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFhAAAwAAAAAAAAAAAAAAAAAAAAEx/9oACAEBAAY/AoiIiP/EABcQAQEBAQAAAAAAAAAAAAAAAADxIcH/2gAIAQEAAT8h15JyM//aAAwDAQACAAMAAAAQj/8A/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/EKys/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8Qh//EABkQAAIDAQAAAAAAAAAAAAAAAAABEbHR8f/aAAgBAQABPxByKI3YDgD/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/db3d45dda88a03cd9091a07be99391b7/01472/powerpoint-animations.webp 240w,
+/static/db3d45dda88a03cd9091a07be99391b7/222bd/powerpoint-animations.webp 480w,
+/static/db3d45dda88a03cd9091a07be99391b7/620b9/powerpoint-animations.webp 960w,
+/static/db3d45dda88a03cd9091a07be99391b7/28063/powerpoint-animations.webp 1440w,
+/static/db3d45dda88a03cd9091a07be99391b7/3cdc8/powerpoint-animations.webp 1531w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/db3d45dda88a03cd9091a07be99391b7/3bc27/powerpoint-animations.jpg 240w,
+/static/db3d45dda88a03cd9091a07be99391b7/98431/powerpoint-animations.jpg 480w,
+/static/db3d45dda88a03cd9091a07be99391b7/b3ee8/powerpoint-animations.jpg 960w,
+/static/db3d45dda88a03cd9091a07be99391b7/b97fe/powerpoint-animations.jpg 1440w,
+/static/db3d45dda88a03cd9091a07be99391b7/47faf/powerpoint-animations.jpg 1531w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/db3d45dda88a03cd9091a07be99391b7/b3ee8/powerpoint-animations.jpg&quot;
+          alt=&quot;Powerpoint Animations&quot;
+          title=&quot;Powerpoint Animations&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In video editing, transitions tend to refer to instances where one thing changes from one state to another state. For example, fading titles in and out or between two clips, whereas animations introduce the concept of choosing how something moves and changes between multiple steps. An example  of this is “easing in and out” - and you can geek out on that term in this &lt;a href=&quot;https://easings.net/en&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;open source project that simplifies some&lt;/a&gt; of the ways an object can be animated.&lt;/p&gt;
+&lt;p&gt;But then if you start to dig a little more especially in app and interface design (e.g. the &lt;a href=&quot;https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/animation/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Apple Human interface guidelines &lt;/a&gt; or the &lt;a href=&quot;https://material.io/design/motion/understanding-motion.html#principles&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Android equivalent&lt;/a&gt;) you start to see transitions and animations being discussed as a subset of motion, or in the context of the behaviours or messages they help to convey to the user.&lt;/p&gt;
+&lt;p&gt;This connects me back to my earlier point, why do I care about the naming so much? &lt;/p&gt;
+&lt;p&gt;It’s because I think it does matter what an animation conveys to a user vs a transition and that subtle difference maybe deserves more of a debate, however pedantic it sounds.&lt;/p&gt;
+&lt;h2 id=&quot;lets-get-back-to-tableau&quot;&gt;&lt;a href=&quot;#lets-get-back-to-tableau&quot; aria-label=&quot;lets get back to tableau permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Let’s get back to Tableau.&lt;/h2&gt;
+&lt;p&gt;To ground my exceptions, I scoped the most notable ideas from the community on animations&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://community.tableau.com/ideas/5898&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt; Allow export of animated gif from Pages shelf animation: Joshua Milligan&lt;/a&gt;
+&lt;a href=&quot;https://community.tableau.com/ideas/1633&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt; Tableau “PowerPoint Mode” (animated presentations) : kettan&lt;/a&gt;
+&lt;a href=&quot;https://community.tableau.com/ideas/6412&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt; Animated graph on Tableau public :  ayush varshney &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you take Joshua’s idea and &lt;a href=&quot;https://community.tableau.com/ideas/5898&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt; observe the gif&lt;/a&gt; he’s produced, it displays the month on the top right but the animation occurs day by day. It shows the running total for web page views on his blog over time. The significant thing here is the month provides the overall context but the detail in the animation is provided at the day level. It better reflects sudden movements that would otherwise be hidden if it was aggregated to the month level. &lt;/p&gt;
+&lt;p&gt;The key debate (in my mind) turns out to be about exactly how we build this sort of visualisation and the behaviour we expect when we talk about animating it, this ‘how’ and ‘what’ probably speaks to where most of the discourse is coming from. In the demos we have seen of Viz Animations so far, we see one strong characteristic. In nearly all examples, each animation is animated in such a way that it looks like multiple transitions rather than one fluid movement. &lt;/p&gt;
+&lt;p&gt;I’m going to use the Tableau 2020.1 beta with “Viz Animations” as an example (I’ll come back to a major caveat at the end of this post about this release), I’m showing the running total of Profit and Sales over 4 years. I’ve applied the Index (on order date) on the pages shelf to animate the 4 years.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/15b306637d8694c606d8765cad05a0b5/animated-example-1.gif&quot; alt=&quot;Tableau 2020.1 Viz animations example 1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Now here’s the exact same chart however I’m now asking Tableau to animate the view at the month level of detail over the same 4 years, no change to the axis or metrics. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/e8b8fe184fe5b5c48406b75fa0a72228/animated-example-2.gif&quot; alt=&quot;Tableau 2020.1 Viz animations example 2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Notice how different the final trace of the path looks like this time around. In the first version, when we transition between the years, it suggests that in the first 2 years the Technology trace is just ahead of the Office Supplies trace, however, if you watch the second animation, they’re neck and neck until just before the second year closes out. The trace of the path to this point shows that dynamic more clearly and in my opinion makes the first animated chart misleading. &lt;/p&gt;
+&lt;p&gt;If we called it transitions (whilst I doubt the semantic difference will resonate with users day to day) it’s a more of an honest reflection of what’s happening and it sets expectations, it’s transitioning between two points. &lt;/p&gt;
+&lt;p&gt;Now of-course you could go down one more level of detail and animate by day rather than month.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 893px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 97.76035834266517%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB30oUSBQf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQIf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGRAAAQUAAAAAAAAAAAAAAAAAEAABESEx/9oACAEBAAE/ITiYzY//2gAMAwEAAgADAAAAEGMHAP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EABoQAQADAQEBAAAAAAAAAAAAAAEAETFBURD/2gAIAQEAAT8QA8iwuXSu4QVu/Hb7BKPJbP/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/d5ae58a30a74b4b4b2114d598d312e4c/01472/animated-example-3.webp 240w,
+/static/d5ae58a30a74b4b4b2114d598d312e4c/222bd/animated-example-3.webp 480w,
+/static/d5ae58a30a74b4b4b2114d598d312e4c/b9856/animated-example-3.webp 893w&quot;
+          sizes=&quot;(max-width: 893px) 100vw, 893px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/d5ae58a30a74b4b4b2114d598d312e4c/3bc27/animated-example-3.jpg 240w,
+/static/d5ae58a30a74b4b4b2114d598d312e4c/98431/animated-example-3.jpg 480w,
+/static/d5ae58a30a74b4b4b2114d598d312e4c/6598d/animated-example-3.jpg 893w&quot;
+          sizes=&quot;(max-width: 893px) 100vw, 893px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/d5ae58a30a74b4b4b2114d598d312e4c/6598d/animated-example-3.jpg&quot;
+          alt=&quot;Tableau 2020.1 Viz animations example 2&quot;
+          title=&quot;Tableau 2020.1 Viz animations example 2&quot;
+          loading=&quot;lazy&quot;
+        /&gt;
+      &lt;/picture&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;However, at this point, the trend isn’t that different and so maybe the sweet spot is the weekly ranularity, try it!&lt;/p&gt;
+&lt;h2 id=&quot;to-conclude&quot;&gt;&lt;a href=&quot;#to-conclude&quot; aria-label=&quot;to conclude permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;To conclude&lt;/h2&gt;
+&lt;p&gt;Whatever happens with the feature, we need to avoid showing something misleading. If we carry on calling the feature broadly as ‘Viz Animations’ then in some ways users might expect that Tableau is indeed animating between two states when in fact it’s just transitioning between the two. It also means that we expect less of the feature going forward, maybe we would like transitions between discrete states but animations between states that have a continuous nature like dates. Many of the examples Tableau feature in the conference talk work because they take advantage of transitioning between two relatively distinct states.&lt;/p&gt;
+&lt;p&gt;Maybe the answer to that is more control as to what happens between two points so the user can choose what’s best (we currently have a very limited subset), maybe the other part of this is about marketting, i.e. “Viz animations” is an encompassing term for what will be a very broad set of features, but when invited to give feedback, we can only do so on what we have presented before us.&lt;/p&gt;
+&lt;p&gt;How would I solve this? Well the animation needs to behave according to the releveant detail available in the data set so even if you set the view to a higher level of aggregation, I would argue, it needs to use the underlying data to drive the animation with some flexibility about the &lt;a href=&quot;https://easings.net/en&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;animation style&lt;/a&gt; may be offered as an advanced formating element for animations, that to me would be “Viz Animations”. However, where necessary allow the user to revert to a Transition. What we have today is the later as the only option. &lt;/p&gt;
+&lt;p&gt;So maybe it’s just about product marketing and improving the name of the feature, or adding more to the feature to justify the name, the caveat I mentioned earlier is that the feature hasn’t even shipped, it’s still being built so what finally ships might be different. Maybe I just need to get out more, but it bothered me and maybe it doesn’t bother you or maybe it does, join the debate on &lt;a href=&quot;https://twitter.com/TableauTim/status/1195026636434853890?ref_src=twsrc%5Etfw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[What’s new in Tableau Desktop 2019.3]]></title><description><![CDATA[“In this post I round up the new features in Tableau Desktop 2019.3 with 6 short videos covering each feature. Parameter actions, Italian localisation, local coordinate systems, explain data, parameter action enhancements and distance calculations.“]]></description><link>https://tableautim.comwhat’s-new-in-tableau-desktop-2019-3</link><guid isPermaLink="false">https://tableautim.comwhat’s-new-in-tableau-desktop-2019-3</guid><pubDate>Mon, 09 Dec 2019 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;In this post I round up the new features in Tableau Desktop 2019.3 with 6 short videos covering each feature. Parameter actions, Italian localisation, local coordinate systems, explain data, ISO8601 date formats and distance calculations.&lt;/p&gt;
 &lt;h2 id=&quot;explain-data&quot;&gt;&lt;a href=&quot;#explain-data&quot; aria-label=&quot;explain data permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Explain Data&lt;/h2&gt;
 &lt;p&gt;With this new feature, Tableau can now assist in the process of ad-hoc analysis by surfacing underlying trends and patterns using machine learning and then surfacing the results as charts that you can turn into their own visualisations or use to drive the next step of your analysis.
 &lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.42857142857143%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;div class=&quot;embedVideo-container&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/BKodDgjfUDU?rel=0&quot; class=&quot;embedVideo-iframe&quot; style=&quot;border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot; allowfullscreen&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;/div&gt;&lt;/p&gt;
