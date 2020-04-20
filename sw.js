@@ -42,14 +42,14 @@ self.__precacheManifest = [
     "url": "netlify-identity-widget-0a324fb649ed83133d8a.js"
   },
   {
-    "url": "app-5f37da73346f4d941b27.js"
+    "url": "app-553857b3081dca8117e4.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-cf2fd0f92da7499f18b1.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "ce64e026a7e0a6da3c5f7eac42692914"
+    "revision": "71f4a3e051791b098a579074d499a068"
   },
   {
     "url": "manifest.json",
@@ -150,7 +150,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-5f37da73346f4d941b27.js`))) {
+  if (!resources || !(await caches.match(`/app-553857b3081dca8117e4.js`))) {
     return await fetch(event.request)
   }
 
